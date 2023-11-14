@@ -57,6 +57,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
     def buildTree(self, url):
         print("directories url:", url)
+
         files = os.listdir(r''+url)
         # not show parent directory
         # self.mylist = []
@@ -602,7 +603,7 @@ def translate_path(path):
     path = posixpath.normpath(unquote(path))
     words = path.split('/')
     words = filter(None, words)
-    path = os.getcwd()
+    path = os.path.join(os.getcwd(), "files")
     for word in words:
         drive, word = os.path.splitdrive(word)
         head, word = os.path.split(word)
